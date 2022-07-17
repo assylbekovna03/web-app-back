@@ -1,11 +1,16 @@
-module.exports.login = function (req, res) {
+const Login = async (req, res) => {
   res.status(200).json({
     login: "form controller",
   });
 };
 
-module.exports.register = function(req, res){
-    res.status(200).json({
-        register: "from controller"
-    })
-}
+const Register = async (req, res) => {
+  res.status(200).json({
+    register: "from controller",
+  });
+};
+
+module.exports = {
+  Login,
+  Register,
+};
