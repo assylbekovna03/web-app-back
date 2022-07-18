@@ -1,11 +1,27 @@
 const mongoose = require("mongoose");
-
+const { MongoClient } = require("mongodb");
 // const { MONGO_URI } = process.env;
+// const createIndex = async () => {
+//   try {
+//     const url = "paste your db url";
+//     const client = new MongoClient(url);
+//     const dbName = "nfactorial_project";
+//     await client.connect();
+//     const db = client.db("nfactorial_project");
+//     await db
+//       .collection("nfactorial_project")
+//       .createIndex({ email: 1 }, { unique: true });
 
+//     process.exit(1);
+//   } catch (err) {
+//     console.log(err.stack);
+//   }
+// };
+// createIndex();
 const connectToDatabase = () => {
   const params = {
+    useUnifiedTopology: true,
     useNewUrlParser: true,
-    useUnifiedtopology: true,
   };
   try {
     mongoose.connect(

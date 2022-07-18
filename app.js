@@ -1,10 +1,12 @@
 // require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config();
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const app = express();
-const Auth = require("./router/auth.js");
-const Audio = require("./router/audio.js");
+const Audio = require("./routes/audio.js");
+const userRoutes = require("./routes/user.js");
 
 var corsOptions = {
   origin: function (origin, callback) {
@@ -26,15 +28,12 @@ var corsOptions = {
 
 // use parsing middleware
 app.use(bodyParser.json());
-//adasdasd
-//asdasd//adada/adadasd
-app.use(cors(corsOptions));
-app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+// app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: "50mb" }));
 
-// import routes
 app.use("/", Audio);
-app.use("/api/auth", Auth);
 
+app.use("/api", userRoutes);
 
 module.exports = app;
