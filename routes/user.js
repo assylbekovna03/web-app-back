@@ -8,7 +8,7 @@ router.post(
   [
     check("name", "Name at least should be 3 characters").isLength({ min: 3 }),
     check("nickname", "Nickname at least should be 5 characters").isLength({
-      min: 5,
+      min: 4,
     }),
     check("email", "Email should be valid").isEmail(),
     check("password", "Password at least should be 6 characters").isLength({

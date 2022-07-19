@@ -13,4 +13,4 @@ const audioSchema = new Schema(
 );
 
 const Audio = model("Audio", audioSchema);
-module.exports = {Audio};
+module.exports = Audio;
