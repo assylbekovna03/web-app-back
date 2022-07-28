@@ -25,11 +25,13 @@ const userSchema = new Schema(
       trim: true,
       unique: true,
     },
+    
     encry_password: {
       type: String,
       required: true,
     },
     salt: String,
+    audios: { type: [Schema.Types.ObjectId], ref: "Audio" },
   },
   { timestamps: true }
 );
