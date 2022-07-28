@@ -3,39 +3,35 @@ const express = require("express");
 // const bcrypt = require("bcryptjs");
 const Audio = require("../models/audio.js");
 const User = require("../models/user.js");
-
+const ObjectId = require("mongodb").ObjectId;
 const audioSave = (req, res) => {
   (async function run() {
-    // const { id } = req.params;
+    const { id } = req.params;
 
     const audio = new Audio(req.body);
     await audio.save();
 
     // let users = await User.find({});
     //  for(let i = 0; i < users.length; i++){
-    //   let user = users[i];
-    //   let _id = user._id;
-    //   let mid = mongoose.Types.ObjectId(_id);
-    //   let story = await 
-    //  }
-    
-
-    //   const user = await User.findOne({ nickname: "aruzhant" });
-    //   await User.findOneAndUpdate(
-    //     { nickname: "aruzhant" },
-    //     { audios: [...user?.audios?.map((el) => el._id), audio._id] }
-    //   );
-    // })()\
-
-    // const { id } = req.params._id;
+    //   let user = users[i];mongoo
+    // const user = await User.findOne({ nickname: "aruzhant" });
+    // await User.findOneAndUpdate(mongoose.Types.ObjectId
+    // const { _id } = req.params;
     // console.log({ id });
-
-      const user = await User.findById({ _id: mongoose.Types.ObjectId });
-      await User.findByIdAndUpdate(user._id, {
+    const user = await User.findOne({ _id: new ObjectId(id) });
+    await User.findOneAndUpdate(
+      { _id: new ObjectId(id) },
+      {
         audios: [...user?.audios?.map((item) => item._id), audio._id],
-      });
-
-    console.log(user);
+      }
+    );
+    // User.findById("62e2deb83bc880af4b29a0b0", (err, data) => {
+    //   if (err) {
+    //     console.log(err);
+    //   } else {
+    //     console.log(data);
+    //   }
+    // });
   })();
 };
 
